@@ -101,7 +101,7 @@
 
         //
         const btn = (() => {
-            document.createElement("button");
+            const btn = document.createElement("button");
             btn.className = "ytp-button ytp-snapshot-button";
             btn.title = "Snapshot";
             btn.draggable = false;
