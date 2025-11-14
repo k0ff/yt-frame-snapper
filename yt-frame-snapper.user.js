@@ -177,7 +177,7 @@
                         `t∶ ${ time }; `+
                         `(${ HMS })`+
                     `}; `+
-                    `⁄snapshot`; 
+                    `⁄snapshot.png`;
         })();
         
         //
