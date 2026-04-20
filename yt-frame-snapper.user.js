@@ -4,7 +4,7 @@
 // @description  Take snapshots from YouTube videos
 // @author       KRZYSZTOF TYNKIEWICZ
 // @match        https://*.youtube.com/*
-// @version      0.1.0
+// @version      0.1.1
 // @grant        none
 // ==/UserScript==
 
