@@ -4,7 +4,7 @@
 // @description  Take snapshots from YouTube videos
 // @author       KRZYSZTOF TYNKIEWICZ
 // @match        https://*.youtube.com/*
-// @version      0.1.0
+// @version      0.1.1
 // @grant        none
 // ==/UserScript==
 
@@ -167,17 +167,33 @@
 
         //
         const filename = (() => {
+            const datetime = (() => {
+                const now = (new Date());
+                return [
+                    [
+                        now.getFullYear(),
+                        String(now.getMonth() + 1).padStart(2, '0'),
+                        String(now.getDate()).padStart(2, '0')
+                    ].join('-'),
+                    [
+                        String(now.getHours()).padStart(2, '0'),
+                        String(now.getMinutes()).padStart(2, '0'),
+                        String(now.getSeconds()).padStart(2, '0')
+                    ].join('∶')
+                ].join('; ');
+            })();
+
             const title = getVideoTitle();
             const id = getVideoId();
             const time = Math.floor(video.currentTime);
             const HMS = secondsToHMS(time);
-            
-            return `″${ convertToFileName(title) }″; {`+
-                        `yt∶ ${ id }; `+
-                        `t∶ ${ time }; `+
-                        `(${ HMS })`+
-                    `}; `+
-                    `⁄snapshot.png`;
+
+            return [
+                datetime,
+                `″${ convertToFileName(title) }″`,
+                `{yt∶ ${ id }; t∶ ${ time }; (${ HMS })}`,
+                `⁄snapshot.png`
+            ].join('; ')
         })();
         
         //
